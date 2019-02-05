@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Średnia {
+
+        double[][] oceny = new double[3][4];
+        double[] suma = new double[]{0,0,0};
+        double[] średnia = new double[3];
+        double średniaZPrzedmiotów = 0;
+        Scanner scanner = new Scanner(System.in);
+
+        public double szkoła(){
+        for (int i=0; i<oceny.length;i++) {
+            for (int j = 0; j < oceny[i].length; j++) {
+                if (i == 0)
+                    System.out.println("Podaj ocenę numer " + j + " z matematyki.");
+                else if (i == 1)
+                    System.out.println("Podaj ocenę numer " + j + " z informatyki.");
+                else
+                    System.out.println("Podaj ocenę numer " + j + " z muzyki.");
+                oceny[i][j] = scanner.nextDouble();
+                suma[i]+=oceny[i][j];
+            }
+            System.out.println("Suma ocen z przedmiotu to: "+suma[i]);
+            średnia[i]=suma[i]/4;
+            System.out.println("średnia ocen z przedmiotu to: "+średnia[i]);
+        }
+        for(int k=0; k<średnia.length; k++)
+            średniaZPrzedmiotów+=średnia[k];
+
+            System.out.println("średnia z przedmiotów to "+ średniaZPrzedmiotów/3 +".");
+        return średniaZPrzedmiotów/3;
+
+        }
+
+    public static void main(String[] args) {
+        Średnia objekt = new Średnia();
+
+        objekt.szkoła();
+    }
+        }
