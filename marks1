@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class School1 {
 
-    public double[] przedmiot(String name){
+    public int[] przedmiot(String name){
         Scanner pobierz = new Scanner(System.in);
         System.out.println("Ile posiadasz ocen z przedmiotu "+name);
         int count = pobierz.nextInt();
-        double[] marks = new double[count];
+        int[] marks = new int[count];
         System.out.println("Podaj oceny z przedmiotu: "+name);
         for (int i=0; i<count; i++){
             System.out.println("Podaj ocenę numer "+ (i+1));
@@ -15,7 +15,7 @@ public class School1 {
         return marks;
     }
 
-    public double average(double[] oceny){
+    public double average(int[] oceny){
         double sum = 0;
         for(int j=0; j<oceny.length; j++){
             sum+=oceny[j];
@@ -24,16 +24,28 @@ public class School1 {
         return sum/oceny.length;
     }
 
+    public double allAverage(double[] oceny){
+        double sum = 0;
+        for(int j=0; j<oceny.length; j++){
+            sum+=oceny[j];
+        }
+        System.out.println("Srednia z przedmiotów to: "+ sum/oceny.length );
+        return sum/oceny.length;
+    }
+
+
     public static void main(String[] args) {
         School1 school1 = new School1();
 
-        double[] s=school1.przedmiot("Matematyka");
+        int[] s=school1.przedmiot("Matematyka");
         double ss=school1.average(s);
-        double[] t=school1.przedmiot("Matematyka");
+        int[] t=school1.przedmiot("Informatyka");
         double tt=school1.average(t);
-        double[] u=school1.przedmiot("Matematyka");
+        int[] u=school1.przedmiot("Muzyka");
         double uu=school1.average(u);
-      
+
+        double[] subjects = new double[] {ss,tt,uu};
+        school1.allAverage(subjects);
     }
 
 }
