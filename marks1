@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class School1 {
+
+    public double[] przedmiot(String name){
+        Scanner pobierz = new Scanner(System.in);
+        System.out.println("Ile posiadasz ocen z przedmiotu "+name);
+        int count = pobierz.nextInt();
+        double[] marks = new double[count];
+        System.out.println("Podaj oceny z przedmiotu: "+name);
+        for (int i=0; i<count; i++){
+            System.out.println("Podaj ocenę numer "+ (i+1));
+            marks[i]=pobierz.nextInt();
+        }
+        return marks;
+    }
+
+    public double average(double[] oceny){
+        double sum = 0;
+        for(int j=0; j<oceny.length; j++){
+            sum+=oceny[j];
+        }
+        System.out.println("Srednia to: "+ sum/oceny.length );
+        return sum/oceny.length;
+    }
+
+    public static void main(String[] args) {
+        School1 school1 = new School1();
+
+        double[] s=school1.przedmiot("Matematyka");
+        double ss=school1.average(s);
+        double[] t=school1.przedmiot("Matematyka");
+        double tt=school1.average(t);
+        double[] u=school1.przedmiot("Matematyka");
+        double uu=school1.average(u);
+      
+    }
+
+}
