@@ -1,0 +1,67 @@
+package interfejsy;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Main main = new Main();
+        Computation computation;
+
+        if (main.shouldMultiply()) {
+            computation = new Multiplication(); // zaimplementuj brakującą klasę
+        }
+        else {
+            computation = new Addition(); // zaimplementuj brakującą klasę
+        }
+
+        double argument1 = main.getArgument();
+        double argument2 = main.getArgument();
+
+        double result = computation.compute(argument1, argument2);
+        System.out.println("Wynik: " + result);
+    }
+
+    private boolean shouldMultiply() {
+        Scanner pytanie = new Scanner(System.in);
+        System.out.println("Jaką operację chcesz wykonać? Jeśli mnożenie wybierz '1'. Jeśli dodawanie wybierz dowolny inny klawisz.");
+        int choose = pytanie.nextInt();
+        boolean multi = false;
+        if(choose==1) {
+            multi = true;
+        }
+        return multi; // tutaj zapytaj użytkownika co chce zrobić (mnożenie czy dodawanie)
+    }
+
+    private double getArgument() {
+        Scanner argumenty = new Scanner(System.in);
+        System.out.println("Podaj wartość.");
+        double arg1=argumenty.nextInt();
+        return arg1; // tutaj pobierz liczbę od użytkownika
+    }
+}
+
+
+//dodatkowo
+package interfejsy;
+
+public class Multiplication implements Computation {
+    public double compute(double argument1, double argument2){
+        return argument1*argument2;
+    }
+}
+
+// oraz
+package interfejsy;
+
+public class Addition  implements Computation{
+    public double compute(double argument1, double argument2){
+        return argument1+argument2;
+    }
+}
+
+//oraz
+package interfejsy;
+
+public interface Computation {
+        double compute(double argument1, double argument2);
+    }
